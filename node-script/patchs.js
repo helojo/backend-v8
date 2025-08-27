@@ -75,6 +75,7 @@ function addV8CC() {
         } else if (v8_version == "11.8.172") {
             justReplace(replacePath, '\"//third_party/libc++/src/src/verbose_abort.cpp\",', '\"//third_party/libc++/src/src/verbose_abort.cpp\",\n    \"//third_party/libc++/src/src/wrap_symbols.cc\",');
             fs.copyFileSync(path.join(__dirname, 'wrap_symbols.cc'), path.join(v8_path, 'third_party/libc++/src/src/wrap_symbols.cc'));
+        }else if (v8_version == "13.6.97") {
         } else {
             throw new Error(`not support version:${v8_version}`);
         }
