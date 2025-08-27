@@ -5,7 +5,7 @@ NEW_WRAP=$2
 
 [ -z "$GITHUB_WORKSPACE" ] && GITHUB_WORKSPACE="$( cd "$( dirname "$0" )"/.. && pwd )"
 
-if [ "$VERSION" == "10.6.194" -o "$VERSION" == "11.8.172" ]; then 
+if [[ "$VERSION" == "10.6.194" || "$VERSION" == "11.8.172" || "$VERSION" == "13.6.97" ]]; then
     sudo apt-get install -y \
         pkg-config \
         git \
@@ -91,6 +91,8 @@ node $GITHUB_WORKSPACE/node-script/patchs.js . $VERSION $NEW_WRAP
 
 echo "=====[ Building V8 ]====="
 if [ "$VERSION" == "11.8.172"  ]; then 
+    gn gen out.gn/arm.release --args="target_os=\"android\" target_cpu=\"arm\" is_debug=false v8_enable_i18n_support=false v8_target_cpu=\"arm\" use_goma=false v8_use_snapshot=true v8_use_external_startup_data=false v8_static_library=true strip_debug_info=true symbol_level=0 $CXX_SETTING use_custom_libcxx_for_host=true v8_enable_sandbox=false v8_enable_maglev=false v8_enable_webassembly=false"
+elif [ "$VERSION" == "13.6.97" ]; then
     gn gen out.gn/arm.release --args="target_os=\"android\" target_cpu=\"arm\" is_debug=false v8_enable_i18n_support=false v8_target_cpu=\"arm\" use_goma=false v8_use_snapshot=true v8_use_external_startup_data=false v8_static_library=true strip_debug_info=true symbol_level=0 $CXX_SETTING use_custom_libcxx_for_host=true v8_enable_sandbox=false v8_enable_maglev=false v8_enable_webassembly=false"
 elif [ "$VERSION" == "10.6.194" ]; then
     gn gen out.gn/arm.release --args="target_os=\"android\" target_cpu=\"arm\" is_debug=false v8_enable_i18n_support=false v8_target_cpu=\"arm\" use_goma=false v8_use_snapshot=true v8_use_external_startup_data=false v8_static_library=true strip_debug_info=true symbol_level=0 $CXX_SETTING use_custom_libcxx_for_host=true v8_enable_sandbox=false"
