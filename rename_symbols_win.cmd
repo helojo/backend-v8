@@ -4,7 +4,7 @@ setlocal
 set ARCH=%~1
 set OUTPUT=%~2
 
-echo "%ARCH% out.gn/%ARCH%.release/obj/libwee8.a"
+echo "%ARCH% out.gn/%ARCH%.release/obj/libv8_monolith.a"
 
 llvm-objcopy ^
   --redefine-sym="??2@YAPEAX_K@Z=__puerts_wrap__Znwm" ^

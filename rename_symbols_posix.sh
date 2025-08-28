@@ -26,7 +26,7 @@ llvm-objcopy \
   --redefine-sym=_ZnamSt11align_val_tRKSt9nothrow_t=__puerts_wrap__ZnamSt11align_val_tRKSt9nothrow_t \
   --redefine-sym=_ZnwmSt11align_val_t=__puerts_wrap__ZnwmSt11align_val_t \
   --redefine-sym=_ZnwmSt11align_val_tRKSt9nothrow_t=__puerts_wrap__ZnwmSt11align_val_tRKSt9nothrow_t \
-  out.gn/$ARCH.release/obj/libwee8.a 
+  out.gn/$ARCH.release/obj/libv8_monolith.a 
 
 ninja -v -C out.gn/$ARCH.release d8
 
@@ -79,4 +79,4 @@ llvm-ar x ../libv8_custom_libcxx.a
 mv mutex.o mutex_cxx.o
 mv string.o string_cxx.o
 cd -
-llvm-ar rcs out.gn/$ARCH.release/obj/libwee8.a v8_custom_libcxx/*.o
+llvm-ar rcs out.gn/$ARCH.release/obj/libv8_monolith.a v8_custom_libcxx/*.o

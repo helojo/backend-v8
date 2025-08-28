@@ -100,14 +100,14 @@ rm -rf third_party/android_ndk
 echo "=====[ Building V8 ]====="
 gn gen --args="target_os=\"ohos\" target_cpu=\"arm\" is_debug = false v8_enable_i18n_support= false v8_target_cpu = \"arm\" use_goma = false v8_use_external_startup_data = false v8_static_library = true strip_debug_info=true symbol_level=0 $CXX_SETTING use_custom_libcxx_for_host=true v8_enable_pointer_compression=false use_musl=true" out.gn/arm.release
 ninja -C out.gn/arm.release -t clean
-ninja -v -C out.gn/arm.release wee8
+ninja -v -C out.gn/arm.release v8_monolith
 
 mkdir -p output/v8/Lib/OHOS/armeabi-v7a
 if [ "$NEW_WRAP" == "with_new_wrap" ]; then
   export PATH="$OHOS_NDK_HOME/llvm/bin:$PATH"
   bash $GITHUB_WORKSPACE/rename_symbols_posix.sh arm output/v8/Lib/OHOS/armeabi-v7a
 fi
-cp out.gn/arm.release/obj/libwee8.a output/v8/Lib/OHOS/armeabi-v7a/
+cp out.gn/arm.release/obj/libv8_monolith.a output/v8/Lib/OHOS/armeabi-v7a/
 mkdir -p output/v8/Bin/OHOS/armeabi-v7a
 find out.gn/ -type f -name v8cc -exec cp "{}" output/v8/Bin/OHOS/armeabi-v7a \;
 find out.gn/ -type f -name mksnapshot -exec cp "{}" output/v8/Bin/OHOS/armeabi-v7a \;

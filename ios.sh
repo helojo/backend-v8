@@ -63,11 +63,11 @@ fi
 ninja -C out.gn/arm64.release -t clean
 mkdir -p output/v8/Lib/iOS/arm64
 
-ninja -v -C out.gn/arm64.release wee8
+ninja -v -C out.gn/arm64.release v8_monolith
 if [ "$NEW_WRAP" == "with_new_wrap" ]; then 
   bash $GITHUB_WORKSPACE/rename_symbols_osx.sh arm64 output/v8/Lib/iOS/arm64/
 fi
-cp out.gn/arm64.release/obj/libwee8.a output/v8/Lib/iOS/arm64/
+cp out.gn/arm64.release/obj/libv8_monolith.a output/v8/Lib/iOS/arm64/
 
 mkdir -p output/v8/Bin/iOS/arm64
 find out.gn/ -type f -name v8cc -exec cp "{}" output/v8/Bin/iOS/arm64 \;

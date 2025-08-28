@@ -61,13 +61,13 @@ else
     gn gen out.gn/x64.release --args="is_debug=false v8_enable_i18n_support=false v8_use_snapshot=true v8_use_external_startup_data=false v8_static_library=true strip_debug_info=true symbol_level=0 libcxx_abi_unstable=false v8_enable_pointer_compression=false $CXX_SETTING"
 fi
 ninja -C out.gn/x64.release -t clean
-ninja -v -C out.gn/x64.release wee8
+ninja -v -C out.gn/x64.release v8_monolith
 
 mkdir -p output/v8/Lib/macOS
 if [ "$NEW_WRAP" == "with_new_wrap" ]; then 
   bash $GITHUB_WORKSPACE/rename_symbols_osx.sh x64 output/v8/Lib/macOS/
 fi
-cp out.gn/x64.release/obj/libwee8.a output/v8/Lib/macOS/
+cp out.gn/x64.release/obj/libv8_monolith.a output/v8/Lib/macOS/
 mkdir -p output/v8/Bin/macOS
 find out.gn/ -type f -name v8cc -exec cp "{}" output/v8/Bin/macOS \;
 find out.gn/ -type f -name mksnapshot -exec cp "{}" output/v8/Bin/macOS \;

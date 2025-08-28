@@ -81,8 +81,9 @@ if [ "$NEW_WRAP" == "with_new_wrap" ]; then
 fi
 
 echo "=====[ add ArrayBuffer_New_Without_Stl ]====="
+if [[ "$VERSION" < "13.6.97" ]]; then
 node $GITHUB_WORKSPACE/node-script/add_arraybuffer_new_without_stl.js . $VERSION $NEW_WRAP
-
+fi
 node $GITHUB_WORKSPACE/node-script/patchs.js . $VERSION $NEW_WRAP
 
 echo "=====[ Building V8 ]====="

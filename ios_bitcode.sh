@@ -54,7 +54,7 @@ else
 fi
 ninja -C out.gn/arm64.release -t clean
 mkdir -p output/v8/Lib/iOS/bitcode
-ninja -v -C out.gn/arm64.release wee8
-cp out.gn/arm64.release/obj/libwee8.a output/v8/Lib/iOS/bitcode/
+ninja -v -C out.gn/arm64.release v8_monolith
+cp out.gn/arm64.release/obj/libv8_monolith.a output/v8/Lib/iOS/bitcode/
 
 mkdir -p output/v8/Inc/Blob/iOS/bitcode

@@ -92,7 +92,7 @@ if "%VERSION%"=="9.4.146.24" (
 )
 
 call ninja -C out.gn\x86.release -t clean
-call ninja -v -C out.gn\x86.release wee8
+call ninja -v -C out.gn\x86.release v8_monolith
 
 md output\v8\Lib\Win32
 if "%NEW_WRAP%"=="with_new_wrap" (

@@ -53,10 +53,10 @@ else
     gn gen out.gn/x64.release --args="v8_use_external_startup_data=false v8_use_snapshot=true v8_enable_i18n_support=false is_debug=false strip_debug_info=true symbol_level=0 v8_static_library=true ios_enable_code_signing=false target_os=\"ios\" target_cpu=\"x64\" v8_enable_pointer_compression=false libcxx_abi_unstable=false"
 fi
 ninja -C out.gn/x64.release -t clean
-ninja -C out.gn/x64.release wee8
+ninja -C out.gn/x64.release v8_monolith
 
-./third_party/llvm-build/Release+Asserts/bin/llvm-strip --strip-debug --verbose out.gn/x64.release/obj/libwee8.a
+./third_party/llvm-build/Release+Asserts/bin/llvm-strip --strip-debug --verbose out.gn/x64.release/obj/libv8_monolith.a
 
 mkdir -p output/v8/Lib/iOS/x64
-cp out.gn/x64.release/obj/libwee8.a output/v8/Lib/iOS/x64/
+cp out.gn/x64.release/obj/libv8_monolith.a output/v8/Lib/iOS/x64/
 mkdir -p output/v8/Inc/Blob/iOS/x64

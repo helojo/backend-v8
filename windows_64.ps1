@@ -68,7 +68,7 @@ if ($VERSION -eq "10.6.194" -or $VERSION -eq "11.8.172") {
 }
 & gn gen out.gn\x64.release "--args=$args"
 & ninja -C out.gn\x64.release -t clean
-& ninja -v -C out.gn\x64.release wee8
+& ninja -v -C out.gn\x64.release v8_monolith
 
 mkdir -Force output\v8\Lib\Win64
 Copy-Item -Force out.gn\x64.release\obj\wee8.lib output\v8\Lib\Win64\
