@@ -94,14 +94,14 @@ else
     gn gen out.gn/arm64.release --args="target_os=\"android\" target_cpu=\"arm64\" is_debug=false v8_enable_i18n_support=false v8_target_cpu=\"arm64\" use_goma=false v8_use_snapshot=true v8_use_external_startup_data=false v8_static_library=true strip_debug_info=true symbol_level=0 $CXX_SETTING use_custom_libcxx_for_host=true v8_enable_pointer_compression=false"
 fi
 ninja -C out.gn/arm64.release -t clean
-ninja -v -C out.gn/arm64.release wee8
+ninja -v -C out.gn/arm64.release v8_monolith
 
 mkdir -p output/v8/Lib/Android/arm64-v8a
 if [ "$NEW_WRAP" == "with_new_wrap" ]; then
   export PATH="$(pwd)/third_party/llvm-build/Release+Asserts/bin:$PATH"
   bash $GITHUB_WORKSPACE/rename_symbols_posix.sh arm64 output/v8/Lib/Android/arm64-v8a/
 fi
-cp out.gn/arm64.release/obj/libwee8.a output/v8/Lib/Android/arm64-v8a/
+cp out.gn/arm64.release/obj/libv8_monolith.a output/v8/Lib/Android/arm64-v8a/
 mkdir -p output/v8/Bin/Android/arm64-v8a
 find out.gn/ -type f -name v8cc -exec cp "{}" output/v8/Bin/Android/arm64-v8a \;
 find out.gn/ -type f -name mksnapshot -exec cp "{}" output/v8/Bin/Android/arm64-v8a \;
