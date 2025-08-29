@@ -168,7 +168,7 @@ echo "=====[ Building V8 x86 ]====="
 if [ "$VERSION" == "11.8.172"  ]; then 
     gn gen out.gn/x86.release --args="target_os=\"android\" target_cpu=\"x86\" is_debug=false v8_enable_i18n_support=false v8_target_cpu=\"x86\" use_goma=false v8_use_snapshot=true v8_use_external_startup_data=false v8_static_library=true strip_debug_info=true symbol_level=0 $CXX_SETTING use_custom_libcxx_for_host=true v8_enable_sandbox=false v8_enable_maglev=false v8_enable_webassembly=false"
 elif [ "$VERSION" == "13.6.97" ]; then
-    gn gen out.gn/x86.release --args="target_os=\"android\" target_cpu=\"x86\" is_debug=false v8_enable_i18n_support=false v8_target_cpu=\"x86\" v8_use_external_startup_data=false is_component_build=false v8_monolithic=true v8_static_library=true strip_debug_info=true symbol_level=0 $CXX_SETTING use_custom_libcxx_for_host=true v8_enable_sandbox=false v8_enable_maglev=false v8_enable_webassembly=false"
+    gn gen out.gn/x86.release --args="target_os=\"android\" target_cpu=\"x86\" is_debug=false v8_enable_i18n_support=false v8_target_cpu=\"x86\" v8_use_external_startup_data=false is_component_build=false v8_monolithic=true v8_static_library=true strip_debug_info=true symbol_level=0 $CXX_SETTING use_custom_libcxx_for_host=true v8_enable_sandbox=false v8_enable_maglev=false v8_enable_webassembly=false android32_ndk_api_level=21 android64_ndk_api_level=21"
 elif [ "$VERSION" == "10.6.194" ]; then
     gn gen out.gn/x86.release --args="target_os=\"android\" target_cpu=\"x86\" is_debug=false v8_enable_i18n_support=false v8_target_cpu=\"x86\" use_goma=false v8_use_snapshot=true v8_use_external_startup_data=false v8_static_library=true strip_debug_info=true symbol_level=0 $CXX_SETTING use_custom_libcxx_for_host=true v8_enable_sandbox=false"
 else
