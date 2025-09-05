@@ -1,0 +1,13 @@
+diff --git forkSrcPrefix/src/base/build_config.h forkDstPrefix/src/base/build_config.h
+index 673330236cea4a990544e4d8c46c34e2252fa723..3a8a1d8802c7d4aaa499de45e27b81183f97b350 100644
+--- forkSrcPrefix/src/base/build_config.h
++++ forkDstPrefix/src/base/build_config.h
+@@ -72,6 +72,8 @@ constexpr int kPageSizeBits = 18;
+ // to that size needs to be individually protectable via
+ // {base::OS::SetPermission} and friends.
+ #if (defined(V8_OS_MACOS) && defined(V8_HOST_ARCH_ARM64)) ||         \
++    (defined(V8_OS_ANDROID) &&                                       \
++     (defined(V8_HOST_ARCH_ARM64) || defined(V8_HOST_ARCH_X64))) ||  \
+     defined(V8_HOST_ARCH_LOONG64) || defined(V8_HOST_ARCH_MIPS64) || \
+     defined(V8_OS_IOS)
+ // MacOS & iOS on arm64 uses 16kB pages.
