@@ -113,7 +113,6 @@ COMMON_ARGS="
     v8_enable_sandbox=false
     android32_ndk_api_level=21
     android64_ndk_api_level=21
-    target_os="android"
     v8_enable_test_features=false
     v8_enable_extras=false
     use_lld=true
@@ -179,13 +178,13 @@ find out.gn/ -type f -name mksnapshot -exec cp "{}" output/v8/Bin/Android/x86_64
 
 echo "=====[ Building V8 x86 ]====="
 if [ "$VERSION" == "11.6.189"  ]; then 
-    gn gen out.gn/arm64.release --args="$COMMON_ARGS
-    target_cpu=\"arm64\"
-    v8_target_cpu=\"arm64\""
+    gn gen out.gn/x86.release --args="$COMMON_ARGS
+    target_cpu=\"x86\"
+    v8_target_cpu=\"x86\""
 else
-    gn gen out.gn/arm64.release --args="$COMMON_ARGS
-    target_cpu=\"arm64\"
-    v8_target_cpu=\"arm64\"
+    gn gen out.gn/x86.release --args="$COMMON_ARGS
+    target_cpu=\"x86\"
+    v8_target_cpu=\"x86\"
     v8_enable_webassembly=false"
 fi
 ninja -C out.gn/x86.release -t clean
